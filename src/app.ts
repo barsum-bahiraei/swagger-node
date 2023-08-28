@@ -4,6 +4,7 @@ import swaggerDocument from "../swagger.json";
 import {BaseRouter} from "./modules/base.router";
 import 'reflect-metadata';
 import {DataSource} from 'typeorm';
+import {UserEntity} from "./modules/user/entities/user.entity";
 
 export class App {
     httpServer: Express;
@@ -38,7 +39,7 @@ export class App {
             database: 'chat',
             synchronize: true,
             logging: false,
-            entities: [],
+            entities: [UserEntity],
             subscribers: [],
             migrations: [],
         });

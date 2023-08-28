@@ -4,6 +4,7 @@ import {UserService} from "./user.service";
 export class UserController {
     router: Router = express.Router();
     private readonly userService = new UserService();
+
     constructor() {
         this.router.get('/getAll', this.getAll)
     }
