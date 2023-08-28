@@ -1,0 +1,84 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Test",
+    "description": "Test",
+    "license": {
+      "name": "MIT",
+      "url": "gozine2.ir"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "",
+  "tags": [
+    {
+      "name": "User",
+      "description": "User Apis"
+    },
+    {
+      "name": "Auth",
+      "description": "User Apis"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "definitions": {
+    "user": {
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "firsName": {
+          "type": "string",
+          "$ref": "#/definitions/user"
+        }
+      }
+    }
+  },
+  "paths": {
+    "/user": {
+      "get": {
+        "summary": "Get all users",
+        "tags": [
+          "User"
+        ],
+        "operationId": "",
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/auth": {
+      "post": {
+        "summary": "Get all users",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Test",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    }
+  }
+}
