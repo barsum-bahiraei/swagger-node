@@ -5,18 +5,27 @@ export class UserEntity extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({nullable: true})
-    email?: string;
-
     @Column({unique: true})
-    phoneNumber: string;
+    email: string;
 
     @Column({nullable: true})
-    password?: string;
+    phoneNumber?: string;
 
     @Column({nullable: true})
-    firstName?: string;
+    password: string;
+
+    @Column()
+    firstName: string;
+
+    @Column()
+    lastName: string;
 
     @Column({nullable: true})
-    lastName?: string;
+    lastLogin?: string;
+
+    @Column({type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)"})
+    createdAt?: string;
+
+    @Column({type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)"})
+    updatedAt?: string;
 }
