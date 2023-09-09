@@ -1,28 +1,25 @@
 import express, {Response, Request, Router} from "express";
 import {PreRegisterDto} from "./dto/pre-register.dto";
 import {UserService} from "./user.service";
+import {BaseController} from "../base.controller";
 
-export class UserController {
+export class UserController extends BaseController {
     router: Router;
-    private readonly userService: UserService;
+    private readonly userService: UserService = new UserService();
 
     constructor() {
+        super();
         this.userService = new UserService();
-        console.log(this.userService.preRegister())
-        // this.userService = new UserService();
-        this.initialRouter();
-    }
-
-    private initialRouter() {
+        // this.initialRouter();
         this.router = express.Router();
         this.router.post('/pre-register', this.preRegister);
     }
 
-    public preRegister(req: Request<null, null, PreRegisterDto>, res: Response) {
+    // private initialRouter() {
+    // }
+
+    preRegister() {
         console.log(this)
-        // console.log(this.router)
-        // await this.userService.preRegister()
-        // console.log(this.userService)
-        // this.userService.preRegister(req.body)
+        // res.send("Hello World!")
     }
 }

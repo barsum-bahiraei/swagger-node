@@ -9,5 +9,6 @@ export class UserService {
 
     public async preRegister() {
         console.log("amin")
+        console.log(this)
     }
 }

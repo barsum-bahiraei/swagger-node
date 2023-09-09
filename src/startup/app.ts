@@ -3,8 +3,6 @@ import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "../../swagger.json";
 import {BaseRouter} from "../modules/base.router";
 import 'reflect-metadata';
-import {DataSource} from 'typeorm';
-import {UserEntity} from "../modules/user/entities/user.entity";
 import {AppDataSource} from "./app-data-source";
 
 export class App {
