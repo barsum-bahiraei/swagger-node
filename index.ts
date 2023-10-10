@@ -1,3 +1,3 @@
-import {App} from "./src/startup/app";
+import {Main} from "./src/startup/main";
 
-new App().Start();
+new Main().Start();

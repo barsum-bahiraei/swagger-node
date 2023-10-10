@@ -4,9 +4,9 @@ import swaggerDocument from "../../swagger.json";
 import 'reflect-metadata';
 import {appDataSource} from "./app-data-source";
 import {initialController} from "./controller";
+import {cacheService} from "./cache-service";
 
-export class App {
-    count = 1
+export class Main {
     httpServer: Express;
     port: number = Number(process.env.PORT) || 3000;
 
@@ -14,16 +14,16 @@ export class App {
         this.httpServer = express();
     }
 
-    public Start() {
+    async Start() {
         initialController(this.httpServer);
         this.initialSwagger();
+        cacheService.on('error', (err) => console.log('Redis Client Error', err));
+        await cacheService.connect();
         appDataSource.initialize().then(() => {
             console.log("Database Successful Connect")
         }).catch(() => {
             console.log("Database Error Connect")
         })
-        this.httpServer.use(express.json());
-        this.httpServer.use(express.urlencoded({extended: true}));
         this.httpServer.listen(this.port, () => {
             console.log(`⚡️[server]: Server is running at http://localhost:${this.port}/swagger`);
         })

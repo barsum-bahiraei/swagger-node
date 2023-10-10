@@ -4,6 +4,8 @@ import {baseController} from "../modules/base.controller";
 import {MetadataKeys} from "../utils/metadata.keys";
 
 export function initialController(httpServer: Express) {
+    httpServer.use(express.json());
+    httpServer.use(express.urlencoded({extended: true}));
     const info: Array<{ api: string; handler: string }> = [];
 
     baseController.forEach((controllerClass: any) => {

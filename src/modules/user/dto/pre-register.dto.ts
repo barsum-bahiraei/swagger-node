@@ -1,6 +1,6 @@
 export class PreRegisterDto {
     email: string;
     password: string;
-    firstname: string;
+    firstName: string;
     lastName: string;
 }
