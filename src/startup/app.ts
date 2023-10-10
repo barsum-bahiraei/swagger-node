@@ -1,9 +1,9 @@
 import express, {Express} from "express";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "../../swagger.json";
-import {BaseRouter} from "../modules/base.router";
 import 'reflect-metadata';
 import {AppDataSource} from "./app-data-source";
+import {initialController} from "./controller";
 
 export class App {
     httpServer: Express;
@@ -14,9 +14,9 @@ export class App {
     }
 
     public Start() {
+        initialController(this.httpServer);
         this.initialSwagger();
         new AppDataSource().initialDataSource();
-        new BaseRouter(this.httpServer).initialRouter();
         this.httpServer.use(express.json());
         this.httpServer.use(express.urlencoded({extended: true}));
         this.httpServer.listen(this.port, () => {

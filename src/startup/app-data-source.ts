@@ -10,7 +10,7 @@ export class AppDataSource {
             host: 'localhost',
             port: 5432,
             username: 'postgres',
-            password: 'B@rsum1997bar',
+            password: 'B@rsum1375bar',
             database: 'chat',
             synchronize: true,
             logging: false,

@@ -1,15 +1,3 @@
-import {Response} from "express";
+import {UserController} from "./user/user.controller";
 
-export class BaseController {
-    response(
-        res: Response,
-        message?: string,
-        data?: any,
-        code: number = 200
-    ) {
-        res.status(code).json({
-            message,
-            data,
-        });
-    }
-}
+export const baseController = [UserController];
