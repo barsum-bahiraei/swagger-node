@@ -1,14 +1,11 @@
-// import {Repository} from "typeorm";
-// import {UserEntity} from "./entities/user.entity";
-// import {AppDataSource} from "../../startup/app-data-source";
-import {PreRegisterDto} from "./dto/pre-register.dto";
+import {appDataSource} from "../../startup/app-data-source";
+import {Repository} from "typeorm";
+import {UserEntity} from "./entities/user.entity";
 
 export class UserService {
-    // private readonly userRepository: Repository<UserEntity> =
-    //     new AppDataSource().dataSource.getRepository(UserEntity);
+    private readonly userRepository: Repository<UserEntity> = appDataSource.getRepository(UserEntity);
 
     public async preRegister() {
-        console.log("amin")
-        console.log(this)
+        console.log(await this.userRepository.find())
     }
 }
