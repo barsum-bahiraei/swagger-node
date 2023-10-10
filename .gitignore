@@ -99,7 +99,6 @@ dist
 
 # vuepress build output
 .vuepress/dist
-/dist
 .idea
 
 

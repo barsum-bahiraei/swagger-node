@@ -1,6 +1,6 @@
 import express, {Express} from "express";
-import swaggerUi from "swagger-ui-express";
-import swaggerDocument from "../../swagger.json";
+// import swaggerUi from "swagger-ui-express";
+// import swaggerDocument from "../../swagger.json";
 import 'reflect-metadata';
 import {AppDataSource} from "./app-data-source";
 import {initialController} from "./controller";
@@ -15,7 +15,7 @@ export class App {
 
     public Start() {
         initialController(this.httpServer);
-        this.initialSwagger();
+        // this.initialSwagger();
         new AppDataSource().initialDataSource();
         this.httpServer.use(express.json());
         this.httpServer.use(express.urlencoded({extended: true}));
@@ -24,7 +24,7 @@ export class App {
         })
     }
 
-    private initialSwagger() {
-        this.httpServer.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-    }
+    // private initialSwagger() {
+    //     this.httpServer.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+    // }
 }
