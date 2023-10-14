@@ -5,13 +5,17 @@ import 'reflect-metadata';
 import {appDataSource} from "./app-data-source";
 import {initialController} from "./controller";
 import {cacheService} from "./cache-service";
+import dotenv from 'dotenv';
 
 export class Main {
     httpServer: Express;
-    port: number = Number(process.env.PORT) || 3000;
+    port: number;
 
     constructor() {
+        dotenv.config();
         this.httpServer = express();
+        this.port = Number(process.env.PORT) || 3000;
+
     }
 
     async Start() {

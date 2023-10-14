@@ -5,6 +5,7 @@ import {PreRegisterDto} from "./dto/pre-register.dto";
 import {ResponseBody} from "../../utils/response-body.interface";
 import {cacheService} from "../../startup/cache-service";
 import {RegisterVm} from "./vm/register.vm";
+import {generateAccessToken} from "../../middlewares/token";
 
 export class UserService {
     private readonly userRepository: Repository<UserEntity> = appDataSource.getRepository(UserEntity);
@@ -41,7 +42,7 @@ export class UserService {
             return {
                 statusCode: 200,
                 data: {
-                    token: "token"
+                    token: generateAccessToken(email)
                 }
             }
         }

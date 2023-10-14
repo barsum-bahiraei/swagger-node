@@ -2,9 +2,7 @@ import Controller from "../../decorators/controller.decorator";
 import {Post} from "../../decorators/handler.decorator";
 import {UserService} from "./user.service";
 import {Request, Response} from "express";
-import {PreRegisterDto} from "./dto/pre-register.dto";
 import {ResponseBody} from "../../utils/response-body.interface";
-import {UserEntity} from "./entities/user.entity";
 import {RegisterVm} from "./vm/register.vm";
 
 
