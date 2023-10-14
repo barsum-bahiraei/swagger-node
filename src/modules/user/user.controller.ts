@@ -5,6 +5,7 @@ import {Request, Response} from "express";
 import {PreRegisterDto} from "./dto/pre-register.dto";
 import {ResponseBody} from "../../utils/response-body.interface";
 import {UserEntity} from "./entities/user.entity";
+import {RegisterVm} from "./vm/register.vm";
 
 
 @Controller('/user')
@@ -12,8 +13,14 @@ export class UserController {
     private readonly userService = new UserService();
 
     @Post('/pre-register')
-    async preRegister(req: Request, res: Response<ResponseBody<UserEntity>>) {
+    async preRegister(req: Request, res: Response<ResponseBody<number>>) {
         const data = await this.userService.preRegister(req.body);
+        res.json(data)
+    }
+
+    @Post('/register/:email/:verifyCode')
+    async register(req: Request, res: Response<ResponseBody<RegisterVm>>) {
+        const data = await this.userService.register(req.params.email, +req.params.verifyCode);
         res.json(data)
     }
 }
