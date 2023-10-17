@@ -11,13 +11,13 @@ export class UserController {
     private readonly userService = new UserService();
 
     @Post('/pre-register')
-    async preRegister(req: Request, res: Response<ResponseBody<number>>) {
+    async preRegister(req: Request, res: Response) {
         const data = await this.userService.preRegister(req.body);
         res.json(data)
     }
 
     @Post('/register/:email/:verifyCode')
-    async register(req: Request, res: Response<ResponseBody<RegisterVm>>) {
+    async register(req: Request, res: Response) {
         const data = await this.userService.register(req.params.email, +req.params.verifyCode);
         res.json(data)
     }

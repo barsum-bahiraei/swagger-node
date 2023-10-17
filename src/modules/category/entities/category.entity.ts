@@ -15,7 +15,7 @@ export class CategoryEntity extends BaseEntity {
     path: string;
 
     @Column({default: false})
-    isDelete: boolean;
+    isDelete?: boolean;
 
     @CreateDateColumn()
     public createdAt: Date;
