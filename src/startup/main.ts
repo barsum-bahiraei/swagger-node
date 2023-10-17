@@ -25,7 +25,8 @@ export class Main {
         await cacheService.connect();
         appDataSource.initialize().then(() => {
             console.log("Database Successful Connect")
-        }).catch(() => {
+        }).catch((err) => {
+            console.log(err)
             console.log("Database Error Connect")
         })
         this.httpServer.listen(this.port, () => {

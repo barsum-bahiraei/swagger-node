@@ -7,7 +7,6 @@ export function initialController(httpServer: Express) {
     httpServer.use(express.json());
     httpServer.use(express.urlencoded({extended: true}));
     const info: Array<{ api: string; handler: string }> = [];
-
     baseController.forEach((controllerClass: any) => {
         const controllerInstance: { [handleName: string]: Handler } =
             new controllerClass() as any;

@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, CreateDateColumn, UpdateDateColumn} from 'typeorm';
 
 @Entity("User")
 export class UserEntity extends BaseEntity {
@@ -23,9 +23,9 @@ export class UserEntity extends BaseEntity {
     @Column({nullable: true})
     lastLogin?: string;
 
-    @Column({type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)"})
-    createdAt?: string;
+    @CreateDateColumn()
+    public createdAt: Date;
 
-    @Column({type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)"})
-    updatedAt?: string;
+    @UpdateDateColumn()
+    public updatedAt: Date;
 }

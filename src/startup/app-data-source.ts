@@ -1,17 +1,19 @@
 import {DataSource} from "typeorm";
-import {UserEntity} from "../modules/user/entities/user.entity";
 
 
 export const appDataSource: DataSource = new DataSource({
-    type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'postgres',
+    type: 'mssql',
+    host: '127.0.0.1',
+    port: 1433,
+    username: 'sa',
     password: 'B@rsum1375bar',
-    database: 'chat',
+    database: 'DbStore',
     synchronize: true,
     logging: false,
-    entities: [UserEntity],
+    entities: [__dirname + '/../modules/*.entity.{ts,js}'],
     subscribers: [],
     migrations: [],
+    extra: {
+        trustServerCertificate: true,
+    }
 })
